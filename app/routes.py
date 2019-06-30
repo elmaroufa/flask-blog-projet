@@ -1,13 +1,27 @@
 from flask import render_template,url_for,flash,redirect,request
 #ici app represente le dossier app et non l'application app Flak (from app)
 from app import app,db,bcrypt
-from .forms import RegisterForm,LoginForm
+import os
+import secrets
+app.config['UPLOAD_FOLDER']= app.root_path + '/static/profil_picture'
+from .forms import RegisterForm,LoginForm,UpdateAccount,PostForm
 from .models import User
 from flask_login import login_user,current_user,logout_user,login_required
+
+#fonction pour la creation d'image de profil
+def save_picture(form_picture):
+    ramdom_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = ramdom_hex + f_ext
+    #form_picture.save(os.path.join(app.config['UPLOAD_FOLDER'],picture_fn))
+    picture_path = os.path.join(app.root_path, 'static/profil_picture',picture_fn)
+    form_picture.save(picture_path)
+    return picture_fn
 
 @app.route('/')
 @app.route('/home')
 def home():
+    #return  app.root_path
     return render_template('home.html')
 
 @app.route('/register',methods=['GET','POST'])
@@ -43,11 +57,37 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route('/account')
+@app.route('/account',methods=['POST','GET'])
 @login_required
 def account():
+    form = UpdateAccount()
+    if form.validate_on_submit():
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            current_user.image_user = picture_file
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('your account as be update','success')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
     image_file = url_for('static',filename="profil_picture/" + current_user.image_user)
-    return render_template('auth/account.html',image_file=image_file)
+    return render_template('auth/account.html',image_file=image_file,form=form)
+
+
+@app.route('/post/new',methods=['GET','POST'])
+@login_required
+def add_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data,content=form.content.data, author=current_user.id)
+        db.session.add(post)
+        db.session.commit()
+        flash('Add new Post success','success')
+        return redirect(url_for('home'))
+    return render_template('create_post.html',title='New Post',form=form)
 
 
 

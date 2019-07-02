@@ -5,7 +5,7 @@ import os
 import secrets
 app.config['UPLOAD_FOLDER']= app.root_path + '/static/profil_picture'
 from .forms import RegisterForm,LoginForm,UpdateAccount,PostForm
-from .models import User
+from .models import User,Post
 from flask_login import login_user,current_user,logout_user,login_required
 
 #fonction pour la creation d'image de profil
@@ -21,8 +21,8 @@ def save_picture(form_picture):
 @app.route('/')
 @app.route('/home')
 def home():
-    #return  app.root_path
-    return render_template('home.html')
+    posts = Post.query.all()
+    return render_template('home.html',posts=posts)
 
 @app.route('/register',methods=['GET','POST'])
 def register():
@@ -82,7 +82,7 @@ def account():
 def add_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data,content=form.content.data, author=current_user.id)
+        post = Post(title=form.title.data,content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash('Add new Post success','success')

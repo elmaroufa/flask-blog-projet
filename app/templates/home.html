@@ -15,6 +15,7 @@
        {% endif %}
   {%endwith%}
   <!-- Blog Post -->
+  {% for post in posts %}
     <article class="media content-secttion">
     <img src="" alt="" class="rounded-circle img-artilce">
     <div class="media-body">
@@ -22,10 +23,11 @@
         <a href="" class="mr-2"></a>
         <small class="text-muted"></small>
       </div>
-       <h2> <a href="" class="article-title">gshbsdasdha</a></h2>
-       <p class="article-content">kshdjfgsjhfd</p>
+       <h2> <a href="" class="article-title">{{post.title}}</a></h2>
+       <p class="article-content">{{ post.content }}</p>
     </div>
     </article>
+    {% endfor %}
 </div>
          {% include "sidebar.html" %}
     

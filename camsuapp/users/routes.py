@@ -25,17 +25,18 @@ def register():
 
 @users.route("/", methods=['GET', 'POST'])
 def login():
-    #if current_user.is_authenticated:
-        #return redirect(url_for('main.home'))
+    if current_user.is_authenticated:
+        return redirect(url_for('admins.home'))
     form = LoginForm()
     if form.validate_on_submit():
-        #user = User.query.filter_by(email=form.email.data).first()
-        usrname="elmaroufa@gmail.com"
-        password="123456"
-        if usrname==form.email.data and password==form.password.data:
-            return redirect(url_for('admins.home'))
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password,form.password.data):
+            login_user(user)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('admins.home'))
         else:
-            flash('Login Unsuccessful. Please check email and password', 'danger')
+            flash('Information connection incorrecte', 'danger')
+            return redirect(url_for('users.login'))
     return render_template('login.html', title='Login', form=form)
 
 

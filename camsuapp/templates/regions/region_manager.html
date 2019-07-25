@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %} 
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Gestion des regions</h1>
+    
+    <div class="btn-toolbar mb-6 mb-md-0">
+         <div class="row colone-button">
+          <div class="col-md-14">
+       <button type="button" class="btn btn-success" id="button-add-membre">
+       <i class="fas fa-plus"></i></br>
+         Ajouter Region
+      </button>
+    </div>
+     
+    </div>
+    </div>
+  </div>
+<!-- Fin-->
+  <!-- contenue a ajouter-->
+  
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+<thead class="thead-dark">
+<tr>
+  <th scope="col">#</th>
+  <th scope="col">Nom de la region</th>
+  <th scope="col">Ville de la region</th>
+  <th scope="col">Siege</th>
+  <th scope="col">President Regionnal</th>
+  <th scope="col">Option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th scope="row">1</th>
+ <td> <a href="">Region du Littoral</a></td>
+  <td>Douala</td>
+  <td>Universite de douala,mont des oliviers</td>
+   <td>Mohamadou Saabiou</td></a>
+    <td><button type="button" data-name_pr="Mohamadou Saabiou" data-name_br="Region du Littoral"
+      class="btn btn-info update_region" >modifier</button>
+    <button type="button" class="btn btn-danger supress-m" >suprimer </button></td>
+</tr>
+<tr>
+  <th scope="row">2</th>
+ <td> <a href="">Region de l'extreme Nord</a></td>
+  <td>Maroua</td>
+  <td>Universite de la paix</td>
+   <td>Aboubakar Lamdo</td></a>
+    <td><button type="button" data-name_pr="Aboubakar Lamdo" data-name_br="Region de l'extreme Nord" class="btn btn-info update_region" >modifier</button>
+    <button type="button" class="btn btn-danger supress-m"  >suprimer </button></td>
+</tr>
+</tbody>
+</table>
+        
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  {% block modals %} 
+   {% include 'includes/modalregions.html'%}
+  {% endblock %}
+
+  {% block js %} 
+  <script src="{{url_for('static',filename='assets/js/jquery.min.js')}}" ></script>
+  <script src="{{url_for('static',filename='assets/js/popper.min.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/js/bootstrap.min.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+  <script src="{{url_for('static',filename='assets/js/jsregion.js')}}"></script>
+{% endblock %}

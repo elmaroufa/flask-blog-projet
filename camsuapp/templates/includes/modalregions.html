@@ -1,0 +1,59 @@
+<div class="modal fade" id="modal-filtre-membre" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="titre-modal"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="corp-add" class="d-none"> 
+            <form role="form" method="POST" action="" id="monform">
+                {{ form.hidden_tag() }}
+              <div class="form-group col-md-13">
+                <label for="inputState">Nom Branche</label>
+                <input type="text" class="form-control" id="name_br" name="branche">
+              </div>
+              <div class="form-group col-md-13">
+                <label for="inputState">Siege Branche</label>
+                <input type="text" class="form-control" id="siege" name="siege">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">Ville localise</label>
+                  <input type="text" class="form-control" id="vill_local" name="ville">
+                </div>
+                
+                <div class="form-group col-md-6">
+                  <label for="inputZip">Annee creation</label>
+                  <input type="date" class="form-control" id="date_br" name="date">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputCity">President Regionnal</label>
+                  <input type="text" class="form-control" id="name_pr"  placeholder="email" name="amir">
+                </div>
+                
+                <div class="form-group col-md-6">
+                  <label for="inputZip">Nombre sous branche</label>
+                  <input type="number" class="form-control" id="qt_br" name="nombre">
+                </div>
+              </div></br>
+              <div class="form-group">
+                  <div>
+                      <button type="submit" class="btn btn-info btn-block">Enregistrer</button>
+                  </div>
+              </div>
+          </form>
+          </div>
+          <div id="corp-delete" class="d-none">Vous le vous suprimer Mr Adamaou Garba</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="myclose" class="btn btn-danger" data-dismiss="modal">Annule</button>
+          <button type="button" id="close-remove" class="btn btn-danger d-none">suprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>

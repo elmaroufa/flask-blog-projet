@@ -6,7 +6,18 @@ $(document).ready(function() {
           url: url,
           data: $('form').serialize(), // serializes the form's elements.
           success: function (data) {
-              console.log(data)  // display the returned data in the console.
+              if(data.errors)
+                {
+                  $.each(data.errors, function(key,value){
+                    $('#' + key).addClass('is-invalid');
+                    $('.f'+key).removeClass('d-none')
+                    $('.f'+key).append(value) 
+                })
+                  //console.log(keys[0])
+                }
+                else{
+                  location.reload(true);
+                }
           }
       });
       e.preventDefault(); // block the traditional submission of the form.

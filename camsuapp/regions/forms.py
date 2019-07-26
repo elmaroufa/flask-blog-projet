@@ -10,8 +10,8 @@ class RegionForm(FlaskForm):
     villebranche = StringField('Ville',validators=[DataRequired(),length(min=2,max=200)])
     siegebranche = StringField('Site',validators=[DataRequired(),length(min=2,max=200)])
     amirbranche = StringField('President',validators=[DataRequired(),length(min=2,max=200)])
-    sousbranche = IntegerField('Sous branche', validators=[DataRequired(),length(min=2,max=200)])
-    datebranche = DateField('date adhesion', validators=[DataRequired()], format='%Y-%m-%d')
+    #sousbranche = IntegerField('Sous branche', validators=[DataRequired(),length(min=2,max=200)])
+    #datebranche = DateField('date adhesion', validators=[DataRequired()], format='%Y-%m-%d') '''
     submit = SubmitField("Enregistrer")
 
 

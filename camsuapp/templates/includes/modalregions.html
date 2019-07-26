@@ -13,16 +13,23 @@
                 {{ form.hidden_tag() }}
               <div class="form-group col-md-13">
                 <label for="inputState">Nom Branche</label>
-                <input type="text" class="form-control" id="name_br" name="branche">
+                {{form.namebranche(class="form-control",id="namebranche") }}
+                <div class="fnamebranche invalid-feedback d-none">
+
+              </div>
               </div>
               <div class="form-group col-md-13">
-                <label for="inputState">Siege Branche</label>
-                <input type="text" class="form-control" id="siege" name="siege">
+                <label for="inputState">Ville Branche</label>
+                {{form.villebranche(class="form-control",id="villebranche") }}
+                <div class="fvillebranche invalid-feedback d-none">     
+                  </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputCity">Ville localise</label>
-                  <input type="text" class="form-control" id="vill_local" name="ville">
+                  <label for="inputCity">Siege branche</label>
+                  {{form.siegebranche(class="form-control",id="siegebranche") }}
+                  <div class="fsiegebranche invalid-feedback d-none">     
+                    </div>
                 </div>
                 
                 <div class="form-group col-md-6">
@@ -33,7 +40,9 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputCity">President Regionnal</label>
-                  <input type="text" class="form-control" id="name_pr"  placeholder="email" name="amir">
+                  {{form.amirbranche(class="form-control",id="amirbranche") }}
+                  <div class="famirbranche invalid-feedback d-none">     
+                    </div>
                 </div>
                 
                 <div class="form-group col-md-6">

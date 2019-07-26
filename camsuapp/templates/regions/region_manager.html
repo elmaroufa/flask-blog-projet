@@ -32,16 +32,7 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-  <th scope="row">1</th>
- <td> <a href="">Region du Littoral</a></td>
-  <td>Douala</td>
-  <td>Universite de douala,mont des oliviers</td>
-   <td>Mohamadou Saabiou</td></a>
-    <td><button type="button" data-name_pr="Mohamadou Saabiou" data-name_br="Region du Littoral"
-      class="btn btn-info update_region" >modifier</button>
-    <button type="button" class="btn btn-danger supress-m" >suprimer </button></td>
-</tr>
+
 <tr>
   <th scope="row">2</th>
  <td> <a href="">Region de l'extreme Nord</a></td>
@@ -51,6 +42,18 @@
     <td><button type="button" data-name_pr="Aboubakar Lamdo" data-name_br="Region de l'extreme Nord" class="btn btn-info update_region" >modifier</button>
     <button type="button" class="btn btn-danger supress-m"  >suprimer </button></td>
 </tr>
+{% for branches in branche %}
+<tr>
+  <th scope="row">{{conter}}</th>
+  
+ <td> <a href="">{{branche.name_branche}}</a></td>
+  <td>{{branche.vile_local}}</td>
+  <td>{{branche.name_siege}}</td>
+   <td>{{branche.name_president}}</td></a>
+    <td><button type="button" data-name_pr="{{branche.name_president}}" data-name_br="{{branche.name_branche}}" class="btn btn-info update_region" >modifier</button>
+    <button type="button" class="btn btn-danger supress-m"  >suprimer </button></td>
+</tr>
+{%endfor%}
 </tbody>
 </table>
         

@@ -21,10 +21,12 @@ def create_app(config_class=Config):
     from camsuapp.users.routes import users
     from camsuapp.admins.routes import admins
     from camsuapp.regions.views import regions
+    from camsuapp.membres.routes import membres
     from camsuapp.errors.handlers import errors
     app.register_blueprint(users)
     app.register_blueprint(admins)
     app.register_blueprint(regions)
+    app.register_blueprint(membres)
     app.register_blueprint(errors)
 
     return app

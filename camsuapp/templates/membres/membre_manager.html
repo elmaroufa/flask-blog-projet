@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block content %} 
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Gestion des membres</h1>
+    
+    <div class="btn-toolbar mb-2 mb-md-0">
+         <div class="row colone-button">
+          <div class="col-md-3">
+       <button type="button" class="btn btn-success">
+        <i class="fas fa-user-plus"></i>
+         Membre
+      </button>
+    </div>
+     <div class="col-md-2">
+       <button type="button" class="btn btn-info" id="button-filtre-membre">
+        <i class="fas fa-filter"></i>
+         Filtre 
+      </button>
+    </div>
+     
+    <div class="col-md-3">
+      <button type="button" class="btn btn-warning" id="auth-button">
+        <i class="fas fa-exclamation-triangle"></i>
+        Autorisation
+     </button>
+   </div>
+    </div>
+    </div>
+  </div>
+<!-- Fin-->
+  <!-- contenue a ajouter-->
+  <div class="container-fluid float-left">
+<form>
+<div class='row'>
+<div class="form-group col-md-9">
+<input type="text" class="form-control" id="inputAddress" placeholder="trouver membre">
+</div>
+<div class="col-md-3">
+<button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+</div>
+
+
+</form>
+</div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table">
+<thead class="thead-dark">
+<tr>
+  <th scope="col">#</th>
+  <th scope="col">Nom et Prenom</th>
+  <th scope="col">Branche</th>
+  <th scope="col">Sexe</th>
+  <th scope="col">Contact</th>
+  <th scope="col">Option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th scope="row">1</th>
+ <td> <a href="">Adamou Garba hamad salman </a></td>
+  <td>Region de ngaoundre</td>
+  <td>masculin</td>
+   <td>669734148</td></a>
+    <td><a href="" class="btn btn-info" >modifier</a>
+    <button type="button" class="btn btn-danger" id="supress-m" >suprimer </button></td>
+</tr>
+
+</tbody>
+</table>
+        
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  
+
+  {% block js %} 
+  <script src="{{url_for('static',filename='assets/js/jquery.min.js')}}" ></script>
+  <script src="{{url_for('static',filename='assets/js/popper.min.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/js/bootstrap.min.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+  <script src="{{url_for('static',filename='assets/js/jsregion.js')}}"></script>
+{% endblock %}

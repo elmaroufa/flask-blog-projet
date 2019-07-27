@@ -38,15 +38,15 @@
  <td> <a href="">Region de l'extreme Nord</a></td>
   <td>Maroua</td>
   <td>Universite de la paix</td>
-   <td>Aboubakar Lamdo</td></a>
+   <td>Aboubakar Lamdo{{title}}</td></a>
     <td><button type="button" data-name_pr="Aboubakar Lamdo" data-name_br="Region de l'extreme Nord" class="btn btn-info update_region" >modifier</button>
     <button type="button" class="btn btn-danger supress-m"  >suprimer </button></td>
 </tr>
-{% for branches in branche %}
+{% for branche in branches %}
 <tr>
-  <th scope="row">{{conter}}</th>
+  <th scope="row">3</th>
   
- <td> <a href="">{{branche.name_branche}}</a></td>
+ <th> <a href="">{{ branche.name_branche }}</a></th>
   <td>{{branche.vile_local}}</td>
   <td>{{branche.name_siege}}</td>
    <td>{{branche.name_president}}</td></a>

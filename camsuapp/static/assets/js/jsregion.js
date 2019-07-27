@@ -74,8 +74,8 @@ const afficher = () => {
     try {
       title = "Mise a jour region"
       process_add(title)
-      $("#name_br").val($(this).data('name_br'))
-      $("#name_pr").val($(this).data('name_pr'))
+      $("#namebranche").val($(this).data('name_br'))
+      $("#amirbranche").val($(this).data('name_pr'))
     }
     catch (e) {
       alert(e);
